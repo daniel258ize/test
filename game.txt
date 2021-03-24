@@ -1,1 +1,3293 @@
-wad
+Let's make a game!
+    name:My First Game
+    by:DanielSuen
+    desc:just a simple testing game
+    created:3/6/2020
+    updated:3/6/2020
+    version:1
+    
+Settings
+    background:stuff/meadow.jpg
+    stylesheet:stuff/bigBlue.css
+    building cost increase:115%
+	building cost refund:50%
+    spritesheet:icons, 48 by 48, stuff/bunnyIcons.png
+    stylesheet:https://pastebin.com/raw/rCprmbXY
+
+Includes
+    *include handUpgradeGains %baseGain : [%baseGain]*2
+    //(2 * [%baseGain])
+    // ([%baseGain] * ((friendPoint) + (tellDefamatory) + (work) + (iceCream) + (gift) + (bed) + (tamJai) + (tamJaiSamGor) + (photography) + (house) + (party) + (airline) + (timeMachine)))
+
+
+    *include upgradeClickDisplay %upgradeID
+        on click:
+            if ([%upgradeID])
+                light [%upgradeID]
+            else
+                dim [%upgradeID]    
+            end
+        end
+        on load:
+            if ([%upgradeID])
+                light [%upgradeID]
+            else
+                dim [%upgradeID]    
+            end
+        end
+
+Layout
+    *main
+        contains:res, buttons, achi
+        *res
+            contains:Resources
+            class:fullWidth
+        *buttons
+            contains:Buttons
+        *achi
+            contains:Achievements
+            names:hide
+    *store
+        contains:buildings, upgrades
+        *buildings
+            contains:BulkDisplay, Buildings
+            header:Buildings
+            tooltip origin:left
+        *upgrades
+            contains:Upgrades
+            header:Upgrades
+            costs:hide
+            names:hide
+        
+Buttons
+    //use my head icon
+    *kissHoiKi
+        name:Kiss Hoi Ki
+        desc:Click this to Kiss Hoi Ki.
+        on click:yield 1 love
+        on click:anim icon wobble
+        no text
+        icon:http://www.free-icons-download.net/images/greedy-emoticon-18451.png
+        tooltip origin:bottom
+        class:bigButton hasFlares
+        icon class:shadowed
+
+Resources
+    //use love icon
+    *love
+        name:Love
+        desc:This is Love for you and Hoi Ki relationship. You can't get special tools if you don't have enough Love!
+        show earned
+        class:noBackground
+        icon:icons[0,0]
+    
+    *prestigePoint
+        name:Prestige Point
+        desc:This is Love for you and Hoi Ki relationship. You can't get special tools if you don't have enough Love!
+        show earned
+        class:noBackground
+        icon:icons[0,0]
+        start with:0
+
+    *prestigeWeight
+        name:Prestige Weight
+        desc:Times by 0.1
+        show earned
+        class:noBackground
+        icon:icons[0,0]
+        start with:1
+
+
+    /*  hidden res
+        //*money
+
+        *reputation
+        //*fat
+    */
+
+Buildings
+    *lipstick
+        name:Apply lipstick
+        desc:Kiss Hoi Ki harder with lipstick!!<//><b>Effect:</b><.>Kiss twice harder.
+        cost:100 love
+        on earn:multiply yield of kissHoiKi by 2
+        on lose:multiply yield of kissHoiKi by 1/2
+        cost increase:500%
+        //icon:
+    
+    *hand
+        name:Hand
+        desc:Get more hands for petting Hoi Ki.
+        on tick:yield 0.1 love
+        cost:15 love
+        req:15 love:earned
+    
+    *friendPoint
+        name:Friend Point
+        desc:Give Hoi Ki some friends.
+        on tick:yield 1 love
+        cost:100 love
+        req:100 love:earned
+
+    *tellDefamatory
+        name:Defamatory Words Collection
+        desc:Tell Hoi Ki defanatory wordings to your friends.
+        on tick:yield 8 love
+        cost:1100 love
+        req:1100 love:earned
+
+    *work
+        name:Work
+        desc:More money less worry
+        on tick:yield 47 love
+        cost:12000 love
+        req:12000 love:earned
+
+    *iceCream
+        name:Ice-cream
+        desc:Hoi Ki should eat ice-cream with you, shouldn't he?
+        on tick:yield 260 love
+        cost:130000 love
+        req:130000 love:earned
+
+    *gift
+        name:Gift
+        desc:Give hime more gift, he will love you more.
+        on tick:yield 1400 love
+        cost:1400000 love
+        req:1400000 love:earned  
+
+    *bed
+        name:Bed
+        desc:Sleep with Hoi Ki
+        on tick:yield 7800 love
+        cost:20000000 love
+        req:20000000 love:earned
+
+    *tamJai
+        name:TamJai
+        desc:Eat TamJai la~~
+        on tick:yield 22000 love
+        cost:160000000 love
+        req:160000000 love:earned 
+
+    *tamJaiSamGor
+        name:TamJai SamGor
+        desc:Eat TamJaiSamGor too~~
+        on tick:yield 22000 love
+        cost:160000000 love
+        req:160000000 love:earned 
+
+    *photography
+        name:Photography
+        desc:Have a photo for memory.
+        on tick:yield 260000 love
+        cost:5100000000 love
+        req:5100000000 love:earned 
+   
+    *house
+        name:House
+        desc:Buying more house so we can live in many place.
+        on tick:yield 1600000 love
+        cost:75000000000 love
+        req:75000000000 love:earned 
+
+    *travelDay
+        name:Accompany
+        desc:Taiwan!!! Japan!!! we are coming!!!!:D
+        on tick:yield 10000000 love
+        cost:1000000000000 love
+        req:1000000000000 love:earned 
+
+    *accompany
+        name:accompany
+        desc:Party Party online, oh oh oh.
+        on tick:yield 65000000 love
+        cost:14000000000000 love
+        req:14000000000000 love:earned
+
+    *timeMachine
+        name:Time Machine
+        desc:Lets wind back the clock for our lovely youngage.
+        on tick:yield 430000000 love
+        cost:170000000000000 love
+        req:170000000000000 love:earned
+
+    *prestigeWeightGain
+        name:Prestige to a new lifeaaa
+        desc:Love Hoi Ki more in a new life
+        on earn:yield 1 prestigeWeight
+        cost:(prestigeWeight)*10000000 love
+        req:(prestigeWeight)*1000000<=(love:earned)
+
+Upgrades
+    // 11 basic upgrades
+    *TEMPLATE
+		on click:anim glow
+    *prestige
+        name:Prestige to a new life
+        desc:Love Hoi Ki more in a new life. Start fresh.
+        cost:(100 + (pow(10, 6) * pow((prestigePoint), 1/0.14)) * 0.75) love
+        icon:icons[1,1]
+        [i:upgradeClickDisplay %upgradeID="prestige"]
+        req:(100 + (pow(10, 6) * pow((prestigePoint), 1/0.14)) * 0.75) <= (love:earned)
+        passive:lose :Buildings
+        passive:lose :Upgrades
+        passive:lose love
+        passive:do ascension
+        on ascension:
+                    if (prestigePoint > 0)
+                        multiply yield of :Buildings by (1/((prestigePoint) * (prestigeWeight) * 0.1))
+                    end
+                    yield pow((love)/pow(10,6),0.14) prestigePoint
+                    multiply yield of :Buildings by ((prestigePoint) * (prestigeWeight) * 0.1)
+                    toast You Are Prestiged. Now Your Love Gains Is Multiplied By ((prestigePoint) * (prestigeWeight) * 0.1).
+                end
+
+    //lipstick
+        *lightColorLipstick
+            name:Light color Lipstick
+            desc:Do not leave a strong lipstick mark on Hoi Ki face.
+            passive:multiply yield of kissHoiKi by 2
+            cost:10000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="lightColorLipstick"]
+            req:(lipstick) >= 10
+
+        *waterproofLipstick
+            name:Waterproof Lipstick
+            desc:Do not leave lipstick mark on Hoi Ki face.
+            passive:multiply yield of kissHoiKi by 50
+            cost:100000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="waterproofLipstick"]
+            req:(lipstick) >= 100
+
+    //hand
+        *kungfuTraining
+            name:Kung-fu training
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of hand by 2
+            passive:multiply yield of kissHoiKi by 2
+            cost:100 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="kungfuTraining"]
+            req:(hand) >= 1
+
+        *reinforcedHand
+            name:Reinforced hand
+            desc:手掌起繭
+            passive:multiply yield of hand by 2
+            passive:multiply yield of kissHoiKi by 2
+            cost:500 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="reinforcedHand"]
+            req:(hand) >= 1
+
+        *cTPCream
+            name:Carpal tunnel prevention cream
+            desc:it... it hurts to slap...
+            passive:multiply yield of hand by 2
+            passive:multiply yield of kissHoiKi by 2
+            cost:10000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="cTPCream"]
+            req:(hand) >= 10
+
+        *ambidextrous
+            name:Ambidextrous
+            desc:Look ma, both hands!
+            passive:increase yield of hand by [i:handUpgradeGains %baseGain="0.1"]
+            cost:1000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="ambidextrous"]
+            req:(hand) >= 25
+
+        *thousandHand
+            name:Thousand hands
+            desc:clickity
+            passive:increase yield of hand by [i:handUpgradeGains %baseGain="0.5"]
+            cost:10000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="thousandHand"]
+            req:(hand) >= 50
+
+        *millionHand
+            name:Million hands
+            desc:clickityclickity
+            passive:increase yield of hand by [i:handUpgradeGains %baseGain="5"]
+            cost:100000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="millionHand"]
+            req:(hand) >= 100
+
+        *billionHand
+            name:Billion hands
+            desc:clickityclickityclickity
+            passive:increase yield of hand by [i:handUpgradeGains %baseGain="50"]
+            cost:1000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="billionHand"]
+            req:(hand) >= 150
+
+        *trillionHand
+            name:Trillion hands
+            desc:clickityclickityclickityclickityclick
+            passive:increase yield of hand by [i:handUpgradeGains %baseGain="500"]
+            cost:10000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="trillionHand"]
+            req:(hand) >= 200
+
+        *quadrillionHand
+            name:Quadrillion hands
+            desc:man, just go click click click click click, it’s real easy, man.
+            passive:increase yield of hand by [i:handUpgradeGains %baseGain="5000"]
+            cost:10000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="quadrillionHand"]
+            req:(hand) >= 250
+
+        *quintillionHand
+            name:Quintillion hands
+            desc:sometimes things just click
+            passive:increase yield of hand by [i:handUpgradeGains %baseGain="50000"]
+            cost:10000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="quintillionHand"]
+            req:(hand) >= 300
+
+        *sextillionHand
+            name:Sextillion hands
+            desc:cursory flavor text
+            passive:increase yield of hand by [i:handUpgradeGains %baseGain="500000"]
+            cost:10000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="sextillionHand"]
+            req:(hand) >= 350
+
+        *septillionHand
+            name:Septillion hands
+            desc:Turns out you can quite put your finger on it.
+            passive:increase yield of hand by [i:handUpgradeGains %baseGain="5000000"]
+            cost:10000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="septillionHand"]
+            req:(hand) >= 400
+    
+    //friends (1.3 increase factor)
+        *boyfriends
+            name:Boy friends
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:1000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="boyfriends"]
+            req:(friendPoint) >= 1
+
+        *arLing
+            name:Ar Ling
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:5000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="arLing"]
+            req:(friendPoint) >= 5
+            
+        *yingTing
+            name:Ying Ting
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:50000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="yingTing"]
+            req:(friendPoint) >= 25
+
+        *friendFood
+            name:Food
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:5000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="friendFood"]
+            req:(friendPoint) >= 50
+
+        *cheungChauFriend
+            name:Cheung Chau friend
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:500000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="cheungChauFriend"]
+            req:(friendPoint) >= 75
+
+        *primarySchoolFriend
+            name:Primary school friend
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:50000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="primarySchoolFriend"]
+            req:(friendPoint) >= 100
+
+        *loL
+            name:Noel
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:50000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="loL"]
+            req:(friendPoint) >= 150
+
+        *wing
+            name:Wing Yu
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:50000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="wing"]
+            req:(friendPoint) >= 175
+
+        *loBa
+            name:Lo Ba
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:50000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="loBa"]
+            req:(friendPoint) >= 200
+
+        *irene
+            name:Irene
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:500000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="irene"]
+            req:(friendPoint) >= 225
+
+        *chiHeng
+            name:Chi Heng
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:5000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="chiHeng"]
+            req:(friendPoint) >= 250
+
+
+        *jackie
+            name:Jackie
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:50000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="jackie"]
+            req:(friendPoint) >= 275
+
+        *fatLam
+            name:Fat Lam
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:500000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="fatLam"]
+            req:(friendPoint) >= 300
+
+        *jimmy
+            name:Jimmy
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:5000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="jimmy"]
+            req:(friendPoint) >= 350
+
+        *lokHin
+            name:Lok Hin
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:50000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="lokHin"]
+            req:(friendPoint) >= 375
+
+        *chiKi
+            name:Shit passage
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of friendPoint by 2
+            cost:500000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="chiKi"]
+            req:(friendPoint) >= 400
+    
+    //defamatory (1.3 increase factor)
+        *getyingTingAngry
+            name:Ying Ting hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:11000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getyingTingAngry"]
+            req:(tellDefamatory) >= 1
+        
+        *getFatLamAngry
+            name:Fat Lam hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:55000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getFatLamAngry"]
+            req:(tellDefamatory) >= 5
+
+        *getBoyfriendsAngry
+            name:Your boy friends hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:550000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getBoyfriendsAngry"]
+            req:(tellDefamatory) >= 25
+
+        *getArLingAngry
+            name:Ar Ling hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:55000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getArLingAngry"]
+            req:(tellDefamatory) >= 50
+
+        *getFriendFoodAngry
+            name:Friend Food hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:550000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getFriendFoodAngry"]
+            req:(tellDefamatory) >= 75
+
+        *getCCFriendAngry
+            name:Cheung Chau friend hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:5500000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getCCFriendAngry"]
+            req:(tellDefamatory) >= 100
+
+        *getPSFriendAngry
+            name:Primary school friend hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:55000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getPSFriendAngry"]
+            req:(tellDefamatory) >= 150
+
+        *getLoLAngry
+            name:Noel hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:550000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getLoLAngry"]
+            req:(tellDefamatory) >= 175
+
+        *getWingyuAngry
+            name:Wing Yu hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:55000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getWingyuAngry"]
+            req:(tellDefamatory) >= 200
+
+        *getLoBaAngry
+            name:Lo Ba hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:5500000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getLoBaAngry"]
+            req:(tellDefamatory) >= 225
+
+        *getIreneAngry
+            name:Irene hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:5500000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getIreneAngry"]
+            req:(tellDefamatory) >= 250
+
+        *getChiHengAngry
+            name:Chi Heng hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:550000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getChiHengAngry"]
+            req:(tellDefamatory) >= 275
+
+        *getJackieAngry
+            name:Jackie hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:5500000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getJackieAngry"]
+            req:(tellDefamatory) >= 300
+
+        *getEricAngry
+            name:Fat Lam hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:55000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getEricAngry"]
+            req:(tellDefamatory) >= 325
+
+        *getJimmyAngry
+            name:Jimmy hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:550000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getJimmyAngry"]
+            req:(tellDefamatory) >= 350
+
+        *getLokHinAngry
+            name:Lok Hin hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:55000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getLokHinAngry"]
+            req:(tellDefamatory) >= 375
+
+        *getChiKiAngry
+            name:Chi Ki hate Hoi Ki now
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tellDefamatory by 2
+            cost:5500000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="getChiKiAngry"]
+            req:(tellDefamatory) >= 400
+    
+    //work
+        *ohNo
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:120000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="ohNo"]
+            req:(work) >= 1
+
+        *weWillBeRich
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:600000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="weWillBeRich"]
+            req:(work) >= 5
+
+        *beACookieMaker
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:6000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="beACookieMaker"]
+            req:(work) >= 25
+
+        *beAFarmer
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:600000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="beAFarmer"]
+            req:(work) >= 50
+
+        *beAMiner
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:60000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="beAMiner"]
+            req:(work) >= 100
+
+        *beAFactoryWorker
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:6000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="beAFactoryWorker"]
+            req:(work) >= 150
+
+        *beABanker
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:6000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="beABanker"]
+            req:(work) >= 200
+
+        *beAITDog
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:6000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="beAITDog"]
+            req:(work) >= 250
+
+        *beAManager
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:6000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="beAManager"]
+            req:(work) >= 300
+
+        *beABigBoss
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:6000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="beABigBoss"]
+            req:(work) >= 350
+
+        *beARichestMan
+            name:work is sad
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of work by 2
+            cost:60000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="beARichestMan"]
+            req:(work) >= 400
+    
+    //icecream
+        *HoiKiMadeIceCream
+            name:Yummy ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost: 1.3*1000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="HoiKiMadeIceCream"]
+            req:(iceCream) >= 1
+
+        *nestleIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:6.5*1000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="nestleIceCream"]
+            req:(iceCream) >= 5
+
+        *oreoIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:65*1000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="oreoIceCream"]
+            req:(iceCream) >= 25
+
+        *appoloIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:6.5*1000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="appoloIceCream"]
+            req:(iceCream) >= 50
+
+        *lotteIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:650*1000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="lotteIceCream"]
+            req:(iceCream) >= 100
+            
+        *binggraeIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:65*1000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="binggraeIceCream"]
+            req:(iceCream) >= 150
+
+        *haagenDazsIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:65*1000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="haagenDazsIceCream"]
+            req:(iceCream) >= 200
+
+        *dreyersIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:65*1000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="dreyersIceCream"]
+            req:(iceCream) >= 250
+
+        *movenpickIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:65*1000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="movenpickIceCream"]
+            req:(iceCream) >= 300
+
+        *cremiaIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:65*1000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="cremiaIceCream"]
+            req:(iceCream) >= 350
+
+        *youMadeIceCream
+            name:Nestle ice-cream
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of iceCream by 2
+            cost:650*1000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="youMadeIceCream"]
+            req:(iceCream) >= 400
+
+    //gift
+        *you
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:14*1000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="you"]
+            req:(gift) >= 1
+
+        *wallet
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:70*1000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="wallet"]
+            req:(gift) >= 5
+
+        *handwriteCard
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:700*1000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="handwriteCard"]
+            req:(gift) >= 25
+
+        *housePuzzle
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:70*1000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="housePuzzle"]
+            req:(gift) >= 50
+
+        *smartPhone
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:7*1000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="smartPhone"]
+            req:(gift) >= 100
+
+        *earPhone
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:700*1000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="earPhone"]
+            req:(gift) >= 150
+
+        *photoFrame
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:700*1000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="photoFrame"]
+            req:(gift) >= 200
+
+        *photoAlbum
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:700*1000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="photoAlbum"]
+            req:(gift) >= 250
+
+        *puzzle
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:700*1000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="puzzle"]
+            req:(gift) >= 300
+
+        *CD
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:700*1000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="CD"]
+            req:(gift) >= 350
+
+        *computer
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of gift by 2
+            cost:7*1000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="computer"]
+            req:(gift) >= 400
+
+    //bed
+        *dryHair
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:200*1000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="dryHair"]
+            req:(bed) >= 1
+
+        *playSmartPhone
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:1*1000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="playSmartPhone"]
+            req:(bed) >= 5
+
+        *kingSize
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:10*1000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="kingSize"]
+            req:(bed) >= 25
+
+        *doraemonBedding
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:1*1000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="doraemonBedding"]
+            req:(bed) >= 50
+
+        *chat
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:100*1000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="chat"]
+            req:(bed) >= 100
+
+        *watchyoutube
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:10*1000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="watchyoutube"]
+            req:(bed) >= 150
+
+        *doNothing
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:10*1000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="doNothing"]
+            req:(bed) >= 200
+
+        *playyoGa
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:10*1000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="playyoGa"]
+            req:(bed) >= 250
+
+        *XXOO
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:10*1000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="XXOO"]
+            req:(bed) >= 300
+
+        *eat
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:10*1000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="eat"]
+            req:(bed) >= 350
+
+        *sleep
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of bed by 2
+            cost:100*1000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="sleep"]
+            req:(bed) >= 400
+
+    //tamJai
+        *rememberLessPortion
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:3.3*1000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="rememberLessPortion"]
+            req:(tamJai) >= 1
+
+        *eatFishBall
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:165*1000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="eatFishBall"]
+            req:(tamJai) >= 25
+
+        *eatSprouts
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:1.65*1000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="eatSprouts"]
+            req:(tamJai) >= 100
+
+        *eatChickenMeat
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:165*1000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="eatChickenMeat"]
+            req:(tamJai) >= 200
+
+        *eatBambooFungus
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:165*1000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="eatBambooFungus"]
+            req:(tamJai) >= 300
+
+    //tamJaiSamGor
+        *eatTapiocaNoodle
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:16.5*1000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="eatTapiocaNoodle"]
+            req:(tamJaiSamGor) >= 5
+
+        *eatChongqingSoup
+            name:You
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:16.5*1000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="eatChongqingSoup"]
+            req:(tamJaiSamGor) >= 50
+
+        *eatCPaSSoup
+            name:CharredPepperAndSpicesSoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:165*1000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="eatCPaSSoup"]
+            req:(tamJaiSamGor) >= 150
+            
+        *extraSpicy
+            name:CharredPepperAndSpicesSoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:165*1000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="extraSpicy"]
+            req:(tamJaiSamGor) >= 250
+
+        *xxSpicy
+            name:CharredPepperAndSpicesSoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:165*1000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="xxSpicy"]
+            req:(tamJaiSamGor) >= 350
+
+        *eatSTSSoup
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of tamJai by 2
+            passive:multiply yield of tamJaiSamGor by 2
+            cost:1.65*1000000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="eatSTSSoup"]
+            req:(tamJaiSamGor) >= 400
+
+    //photography
+        *groupPhoto
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 51000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="groupPhoto"]
+            req:(photography) >= 1
+
+        *sneakShot
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 255000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="sneakShot"]
+            req:(photography) >= 5
+
+        *TaiWanPhoto
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 2550000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="TaiWanPhoto"]
+            req:(photography) >= 25
+
+        *JapanPhoto
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 255000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="JapanPhoto"]
+            req:(photography) >= 50
+
+        *hoiKiPhoto
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 255000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="hoiKiPhoto"]
+            req:(photography) >= 100
+
+        *yourPhoto
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 2550000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="yourPhoto"]
+            req:(photography) >= 150
+
+        *foodPhoto
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 2550000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="foodPhoto"]
+            req:(photography) >= 200
+
+        *hoiKiNudePhoto
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 2550000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="hoiKiNudePhoto"]
+            req:(photography) >= 250
+
+        *yourNudePhoto
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 2550000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="yourNudePhoto"]
+            req:(photography) >= 300
+
+        *marriagePhoto
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 2550000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="yourNudePhoto"]
+            req:(photography) >= 350
+
+        *marriageTape
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of photography by 2
+            cost: 25500000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="marriageTape"]
+            req:(photography) >= 400
+
+    //house
+        *industrial
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 750000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="industrial"]
+            req:(house) >= 1
+
+        *wingFaiCentre
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 3750000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="wingFaiCentre"]
+            req:(house) >= 5
+
+        *newWingFaiCentre
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 37500000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="newWingFaiCentre"]
+            req:(house) >= 25
+
+        *villageHouse
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 3750000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="villageHouse"]
+            req:(house) >= 50
+
+        *publicHouse
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 375000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="publicHouse"]
+            req:(house) >= 100
+
+        *homeOwnership
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 37500000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="homeOwnership"]
+            req:(house) >= 150
+
+        *privateHouse
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 37500000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="privateHouse"]
+            req:(house) >= 200
+
+        *mansionIndust
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 37500000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="mansionIndust"]
+            req:(house) >= 250
+
+        *mansionHillSide
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 37500000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="mansionHillSide"]
+            req:(house) >= 300
+
+        *villa
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 37500000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="villa"]
+            req:(house) >= 350
+
+        *greatHouse
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of house by 2
+            cost: 375000000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="greatHouse"]
+            req:(house) >= 400
+
+    //travel
+        *goHotel
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 10000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goHotel"]
+            req:(travelDay) >= 1
+
+        *goCheungChau
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 50000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goCheungChau"]
+            req:(travelDay) >= 5
+
+        *goMacau
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 500000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goMacau"]
+            req:(travelDay) >= 25
+
+        *goSeoul
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 50000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goSeoul"]
+            req:(travelDay) >= 50
+
+        *goTaiPei
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 5000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goTaiPei"]
+            req:(travelDay) >= 100
+
+        *goKaohsiung
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 500000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goKaohsiung"]
+            req:(travelDay) >= 150
+
+        *goKenting
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 500000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goKenting"]
+            req:(travelDay) >= 200
+
+        *goTokyo
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 500000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goTokyo"]
+            req:(travelDay) >= 250
+
+        *goOsaka
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 500000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goOsaka"]
+            req:(travelDay) >= 300
+
+        *goTakaoka
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 500000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goTakaoka"]
+            req:(travelDay) >= 350
+
+        *goHokkaido
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of travelDay by 2
+            cost: 5000000000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goHokkaido"]
+            req:(travelDay) >= 400
+
+    //accompany
+        *watchingMovie
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 140000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="watchingMovie"]
+            req:(accompany) >= 1
+
+        *watchingyoutube
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 700000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="watchingyoutube"]
+            req:(accompany) >= 5
+
+        *watchingLoveBackHome
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 7000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="watchingLoveBackHome"]
+            req:(accompany) >= 25
+
+        *listeningGMK
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 700000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="listeningGMK"]
+            req:(accompany) >= 50
+
+        *kissingWholeDay
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 70000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="kissingWholeDay"]
+            req:(accompany) >= 100
+
+        *swimmingTGT
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 7000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="swimmingTGT"]
+            req:(accompany) >= 150
+
+        *cookingTGT
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 7000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="cookingTGT"]
+            req:(accompany) >= 200
+
+        *dazing
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 7000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="dazing"]
+            req:(accompany) >= 250
+
+        *footMassage
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 7000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="footMassage"]
+            req:(accompany) >= 300
+
+        *diggingEarwax
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 7000000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="diggingEarwax"]
+            req:(accompany) >= 350
+
+        *marriage
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of accompany by 2
+            cost: 70000000000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="marriage"]
+            req:(accompany) >= 400
+
+    //timeMachine
+        *backToBB
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 1700000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="backToBB"]
+            req:(timeMachine) >= 1
+
+        *backToKid
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 8500000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="backToKid"]
+            req:(timeMachine) >= 5
+
+        *backToPrimarySchool
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 85000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="backToPrimarySchool"]
+            req:(timeMachine) >= 25
+
+        *backToSecondS
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 8500000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="backToSecondS"]
+            req:(timeMachine) >= 50
+
+        *backToBegin
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 850000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="backToBegin"]
+            req:(timeMachine) >= 100
+
+        *backToMarriage
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 85000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="backToMarriage"]
+            req:(timeMachine) >= 150
+
+        *backToAnyWhere
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 85000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="backToAnyWhere"]
+            req:(timeMachine) >= 200
+
+        *goToFuture
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 85000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goToFuture"]
+            req:(timeMachine) >= 250
+
+        *goToAnyWhereyouWant
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 85000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="goToAnyWhereyouWant"]
+            req:(timeMachine) >= 300
+
+        *freezeTime
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 85000000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="freezeTime"]
+            req:(timeMachine) >= 350
+
+        *timeLoop
+            name:eatSourTunglySpicySoup
+            desc:Slap Hoi Ki harder!
+            passive:multiply yield of timeMachine by 2
+            cost: 850000000000000000000000000000000000000 love
+            icon:icons[1,1]
+            [i:upgradeClickDisplay %upgradeID="timeLoop"]
+            req:(timeMachine) >= 400
+
+    //....miscellaneous....
+        *markSixLot
+            on tick:
+                    if (chance(0.0001%))
+                        if (no winMarksix)
+                            yield 1 winMarksix
+                        end
+                        love is love*100
+                        toast You Win A MarkSix !!!!!!!
+                    end
+                end
+            hidden
+            owned
+
+
+        *govLuckyMoney
+            hidden
+            owned
+            on tick:
+                    if (chance(0.01%))
+                        if (no governmentGiveMoney)
+                            yield 1 governmentGiveMoney
+                        end
+                        love is love*10
+                        toast Government Give You Money !!!!
+                    end
+                end
+
+        *motherLuckyMoney
+            hidden
+            owned
+            on tick:
+                    if (chance(0.05%))
+                        if (no motherMoney)
+                            yield 1 motherMoney
+                        end
+                        love is love*5
+                        toast Your Mum Give You Money !!!!
+                    end
+                end
+
+        *fatherLuckyMoney
+            hidden
+            owned
+            on tick:
+                    if (chance(0.05%))
+                        if (no fatherMoney)
+                            yield 1 fatherMoney
+                        end
+                        love is love*5
+                        toast Hoi Ki's Dad Give You Money !!!!
+                    end
+                end
+
+Items
+
+Achievements
+    *TEMPLATE
+		on click:anim glow
+
+    //clicked time
+        *firstKiss
+            name:You kiss Hoi Ki first time!!!
+            desc:Kiss Hoi Ki.
+            req:1 kissHoiKi:clicks
+            icon:icons[2,4] icons[0,2] icons[0,6]
+
+        *705Kiss
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:705 kissHoiKi:clicks
+
+        *828Kiss
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:828 kissHoiKi:clicks
+
+        *1104Kiss
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:1104 kissHoiKi:clicks
+
+        *kissathlon
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:100000 kissHoiKi:clicks
+
+        *kissOlympics
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:10000000 kissHoiKi:clicks
+
+        *kissChampion
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:1000000000 kissHoiKi:clicks
+
+        *kissEnchanted
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:100000000000 kissHoiKi:clicks
+
+        *kissInfinitly
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:10000000000000 kissHoiKi:clicks
+            
+        *kissHell
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:1000000000000000 kissHoiKi:clicks
+
+        *youWouldntStop
+            name:You wont stop, are you?
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:100000000000000000 kissHoiKi:clicks
+
+        *biteKiss
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:10000000000000000000 kissHoiKi:clicks
+
+    //love gain per sec
+        *aNewFriend
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1 love per second
+            icon:
+
+        *aCasualFriend
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10 love per second
+            icon:
+
+        *aOkayFriend
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100 love per second
+            icon:
+
+        *aBestFriend
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000 love per second
+            icon:
+
+        *aBoyFriend
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000 love per second
+            icon:
+
+        *aFiance
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000 love per second
+            icon:
+
+        *aHusband
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000 love per second
+            icon:
+
+        *twoTwistedTowel
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000 love per second
+            icon:
+
+        *twoSuperGlue
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000 love per second
+            icon:
+
+        *twoFatBall
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000 love per second
+            icon:
+
+        *twoInOne
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000000 love per second
+            icon:
+
+        *aGiantBall
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000000 love per second
+            icon:
+
+        *aGrowingBall
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000000 love per second
+            icon:
+
+        *aBallBiggerThanRoom
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000000000 love per second
+            icon:
+
+        *aBallBiggerThanHouse
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000000000 love per second
+            icon:
+
+        *aBBTBuilding
+            name:aBallBiggerThanBuilding
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000000000 love per second
+            icon:
+
+        *aBBTFanling
+            name:aBallBiggerThanFanling
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000000000000 love per second
+            icon:
+
+        *aBBTHongKong
+            name:aBallBiggerThanHongKong
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000000000000 love per second
+            icon:
+
+        *aBBTChina
+            name:aBallBiggerThanChina
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000000000000 love per second
+            icon:
+
+        *aBBTEarth
+            name:aBallBiggerThanEarth
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000000000000000 love per second
+            icon:
+
+        *aBBTSun
+            name:aBallBiggerThanSun
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000000000000000 love per second
+            icon:
+
+        *aBBTSolar
+            name:aBallBiggerThanSolar
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000000000000000 love per second
+            icon:
+
+        *aBBTMilky
+            name:aBallBiggerThanMilky
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000000000000000000 love per second
+            icon:
+
+        *aBTBUniverse
+            name:aBallThatBecomeUniverse
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000000000000000000 love per second
+            icon:
+
+        *aBTBAllUniverse
+            name:aBallThatBecomeAllUniverse
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000000000000000000 love per second
+            icon:
+
+        *lifesStartInTheBall
+            name:lifesStartInTheBall
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000000000000000000000 love per second
+            icon:
+
+        *earthInTheBall
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000000000000000000000 love per second
+            icon:
+
+        *humanInTheBall
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000000000000000000000 love per second
+            icon:
+
+        *MayBeAnotherHKAndTC
+            name:MayBeAnotherHoiKiAndTszChing
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000000000000000000000000 love per second
+            icon:
+
+        *theyMeet
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000000000000000000000000 love per second
+            icon:
+
+        *theyAreInRelation
+            name:theyAreInRelation
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000000000000000000000000 love per second
+            icon:
+
+        *theyAreMarried
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000000000000000000000000000 love per second
+            icon:
+
+        *aBallIsFormedAgain
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000000000000000000000000000 love per second
+            icon:
+
+        *aBallGrowAgain
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000000000000000000000000000 love per second
+            icon:
+
+        *aBAlmostMeetTheBall
+            name:aBallAlmostMeetTheBall
+            desc:Produce <b>1000</b> bunnies per second.
+            req:10000000000000000000000000000000000 love per second
+            icon:
+
+        *aBallMeetTheBall
+            name:Hop and a skip
+            desc:Produce <b>1000</b> bunnies per second.
+            req:100000000000000000000000000000000000 love per second
+            icon:
+
+        *twoBInRelationship
+            name:twoBallInRelationship
+            desc:Produce <b>1000</b> bunnies per second.
+            req:1000000000000000000000000000000000000 love per second
+            icon:
+
+    //-------------achi--------------//
+
+    //lipstick achi
+        *lipAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(lipstick >= 1)
+
+        *lipAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(lipstick >= 2)
+
+        *lipAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(lipstick >= 50)
+
+        *lipAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(lipstick >= 100)
+
+        *lipAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(lipstick >= 200)
+
+        *lipAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(lipstick >= 300)
+
+        *lipAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(lipstick >= 400)
+
+        *lipAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(lipstick >= 500)
+
+        *lipAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(lipstick >= 600)
+
+    //hand achi
+        *handAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(hand >= 1)
+
+        *handAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(hand >= 2)
+
+        *handAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(hand >= 50)
+
+        *handAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(hand >= 100)
+
+        *handAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(hand >= 200)
+
+        *handAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(hand >= 300)
+
+        *handAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(hand >= 400)
+
+        *handAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(hand >= 500)
+
+        *handAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(hand >= 600)
+
+    //friends achi
+        *friendsAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 1)
+
+        *friendsAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 50)
+
+        *friendsAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 100)
+
+        *friendsAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 150)
+
+        *friendsAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 200)
+
+        *friendsAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 250)
+
+        *friendsAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 300)
+
+        *friendsAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 350)
+
+        *friendsAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 400)
+
+        *friendsAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 450)
+
+        *friendsAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 500)
+
+        *friendsAchi12
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(friends >= 550)
+
+    //defamatory achi
+        *dfAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 1)
+
+        *dfAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 50)
+
+        *dfAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 100)
+
+        *dfAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 150)
+
+        *dfAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 200)
+
+        *dfAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 250)
+
+        *dfAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 300)
+
+        *dfAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 350)
+
+        *dfAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 400)
+
+        *dfAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 450)
+
+        *dfAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tellDefamatory >= 500)
+    
+    //work achi
+        *workAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 1)
+
+        *workAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 50)
+
+        *workAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 100)
+
+        *workAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 150)
+
+        *workAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 200)
+
+        *workAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 250)
+
+        *workAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 300)
+
+        *workAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 350)
+
+        *workAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 400)
+
+        *workAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 450)
+
+        *workAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(work >= 500)
+    
+    //icecream achi
+        *icecreamAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 1)
+
+        *icecreamAchi2
+            name:headache
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 50)
+
+        *icecreamAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 100)
+
+        *icecreamAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 150)
+
+        *icecreamAchi5
+            name:Uterus Pain
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 200)
+
+        *icecreamAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 250)
+
+        *icecreamAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 300)
+
+        *icecreamAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 350)
+
+        *icecreamAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 400)
+
+        *icecreamAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 450)
+
+        *icecreamAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(iceCream >= 500)
+
+    //gift achi
+        *giftAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 1)
+
+        *giftAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 50)
+
+        *giftAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 100)
+
+        *giftAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 150)
+
+        *giftAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 200)
+
+        *giftAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 250)
+
+        *giftAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 300)
+
+        *giftAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 350)
+
+        *giftAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 400)
+
+        *giftAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 450)
+
+        *giftAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(gift >= 500)
+
+    //bed achi
+        *bedAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(beed >= 1)
+
+        *bedAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 50)
+
+        *bedAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 100)
+
+        *bedAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 150)
+
+        *bedAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 200)
+
+        *bedAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 250)
+
+        *bedAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 300)
+
+        *bedAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 350)
+
+        *bedAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 400)
+
+        *bedAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 450)
+
+        *bedAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(bed >= 500)
+
+    //tamJai achi
+        *tamJaiAchi1
+            name:tamjaiSpill
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 1)
+
+        *tamJaiAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 50)
+
+        *tamJaiAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 100)
+
+        *tamJaiAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 150)
+
+        *tamJaiAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 200)
+
+        *tamJaiAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 250)
+
+        *tamJaiAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 300)
+
+        *tamJaiAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 350)
+
+        *tamJaiAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 400)
+
+        *tamJaiAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 450)
+
+        *tamJaiAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJai >= 500)
+
+    //tamJaiSamGor achi
+        *newFavour
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 1)
+
+        *tamJaiSamGorAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 50)
+
+        *tamJaiSamGorAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 100)
+
+        *tamJaiSamGorAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 150)
+
+        *tamJaiSamGorAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 200)
+
+        *tamJaiSamGorAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 250)
+
+        *tamJaiSamGorAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 300)
+
+        *tamJaiSamGorAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 350)
+
+        *tamJaiSamGorAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 400)
+
+        *tamJaiSamGorAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 450)
+
+        *tamJaiSamGorAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(tamJaiSamGor >= 500)
+
+    //photography achi
+        *photographyAchi1
+            name:badPhotoSkill
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 1)
+
+        *photographyAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 50)
+
+        *photographyAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 100)
+
+        *photographyAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 150)
+
+        *photographyAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 200)
+
+        *photographyAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 250)
+
+        *photographyAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 300)
+
+        *photographyAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 350)
+
+        *photographyAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 400)
+
+        *photographyAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 450)
+
+        *photographyAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(photography >= 500)
+
+    //house achi
+        *houseAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 1)
+
+        *houseAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 50)
+
+        *houseAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 100)
+
+        *houseAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 150)
+
+        *houseAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 200)
+
+        *houseAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 250)
+
+        *houseAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 300)
+
+        *houseAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 350)
+
+        *houseAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 400)
+
+        *houseAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 450)
+
+        *houseAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(house >= 500)
+
+    //travelDay achi
+        *travelDayAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 1)
+
+        *travelDayAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 50)
+
+        *travelDayAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 100)
+
+        *travelDayAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 150)
+
+        *travelDayAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 200)
+
+        *travelDayAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 250)
+
+        *travelDayAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 300)
+
+        *travelDayAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 350)
+
+        *travelDayAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 400)
+
+        *travelDayAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 450)
+
+        *travelDayAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(travelDay >= 500)
+
+    //accompany achi
+        *accompanyAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 1)
+
+        *accompanyAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 50)
+
+        *accompanyAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 100)
+
+        *accompanyAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 150)
+
+        *accompanyAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 200)
+
+        *accompanyAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 250)
+
+        *accompanyAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 300)
+
+        *accompanyAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 350)
+
+        *accompanyAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 400)
+
+        *accompanyAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 450)
+
+        *accompanyAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(accompany >= 500)
+
+    //timeMachine achi
+        *timeMachineAchi1
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 1)
+
+        *timeMachineAchi2
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 50)
+
+        *timeMachineAchi3
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 100)
+
+        *timeMachineAchi4
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 150)
+
+        *timeMachineAchi5
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 200)
+
+        *timeMachineAchi6
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 250)
+
+        *timeMachineAchi7
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 300)
+
+        *timeMachineAchi8
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 350)
+
+        *timeMachineAchi9
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 400)
+
+        *timeMachineAchi10
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 450)
+
+        *timeMachineAchi11
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:(timeMachine >= 500)
+
+    //-------------upg achi--------------//
+
+    //lipstick upg achi
+        *colorHoiKi
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have lightColorLipstick
+
+        *nonColorHoiKianymore
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have waterproofLipstick
+
+    //hand upg achi
+        *HoiKiDying
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have kungfuTraining 
+            req:have reinforcedHand 
+
+        *handsAbnormal
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have thousandHand 
+
+        *tooManyHands
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have septillionHand 
+            
+    //friends upg achi
+        *firstFriendGet
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have kungfuTraining 
+
+        *bestFriendGet
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have jimmy 
+
+        *allFriendsGet
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have chiKi 
+
+    //defamatory upg achi
+        *yingTingHateHoiKi
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have getyingTingAngry 
+
+        *BoyfriendsHateHoiKi
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have getBoyfriendsAngry 
+
+        *LoBaHateHoiKi
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have getLoBaAngry 
+
+        *IreneHateHoiKi
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have getIreneAngry 
+
+        *getEveryoneAngry
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have getChiKiAngry 
+
+    //work upg achi
+        *weNotSeeSoMuchNow
+            name:weShallNotSeeSoMuchNow
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have ohNo 
+
+        *tryDiffJob
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have beACookieMaker 
+
+        *itDog
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have beAITDog 
+
+        *richest
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have beARichestMan
+
+    //iceCream upg achi
+        *fillWithLove
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have HoiKiMadeIceCream
+
+        *bestIceCream
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have movenpickIceCream
+
+        *MostyummyIC
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have cremiaIceCream
+
+        *bestOfTheBestIC
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have youMadeIceCream
+
+    //gift upg achi
+        *youAreTheBest
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have you
+
+        *theWallet
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have wallet
+
+        *yourTrandition
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have handwriteCard
+
+        *veryExpensive
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have smartPhone
+
+        *allGiftGet
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have computer
+
+    //bed upg achi
+        *otherThanSleep
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have dryHair
+
+        *doraemonBed
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have doraemonBedding
+
+        *showyourLove
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have chat
+
+        *firstXXOO
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have XXOO
+
+        *wellWeBatterSleep
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have sleep
+
+    //tamJai upg achi
+        *rememberLessMX
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have rememberLessPortion
+
+        *AllTamJaiFood
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have eatBambooFungus
+
+    //tamJaiSamGor upg achi
+        *tapioca
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have eatTapiocaNoodle
+
+        *superHot
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have xxSpicy
+
+        *bestSoup
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have eatSTSSoup
+
+    //photography upg achi
+        *sneaky
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have sneakShot
+
+        *jPhoto
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have hoiKiPhoto
+
+        *jToBloodPhoto
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have hoiKiNudePhoto
+
+        *bloodyHellPhoto
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have yourNudePhoto
+
+        *memoryForEver
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have marriageTape
+    
+    //house upg achi
+        *aPlaceToLive
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have industrial
+
+        *newHome
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have newWingFaiCentre
+
+        *aBigerHouse
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have villageHouse
+
+        *privatePlace
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have privateHouse
+
+        *millionaire
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have mansionHillSide
+
+        *billionaire
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have villa
+
+        *richestnaire
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have greatHouse
+
+    //travel upg achi
+        *cheapestTravel
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have goHotel
+
+        *CCTravel
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have goCheungChau
+
+        *KoreaTravel
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have goSeoul
+
+        *flyToTaiWan
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have goTaiPei
+
+        *flyToJapan
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have goTokyo
+
+        *notEnough
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have goHokkaido
+
+    //accompany upg achi
+        *DayoWongMovie
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have watchingMovie
+
+        *willLBHEnd
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have watchingLoveBackHome
+
+        *goodMorningKing
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have listeningGMK
+
+        *startVomiting
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have kissingWholeDay
+
+        *ASMR
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have diggingEarwax
+
+        *marryMe
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have marriage
+
+    //timeMachine upg achi
+        *goBack
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have backToBB
+
+        *goForward
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have goToFuture
+
+        *freeze
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have freezeTime
+
+        *looping
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req:have timeLoop
+
+    //-------------miscellaneous achi--------------//
+
+    //byChance
+        *winMarksix
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+
+        *governmentGiveMoney
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+
+        *motherMoney
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+
+        *fatherMoney
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+
+    //Love clicked
+        *clicked1Love
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req: 1 bigLove:clicks
+
+        *clicked10Love
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req: 10 bigLove:clicks
+
+        *clicked20Love
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req: 20 bigLove:clicks
+
+        *clicked50Love
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req: 50 bigLove:clicks
+
+        *clicked100Love
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req: 100 bigLove:clicks
+
+    //Party
+        *newHouseParty
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req: have jimmy
+            req: have industrial
+
+        *jackieParty
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req: have newWingFaiCentre
+            req: have jackie
+
+    //something
+        *allTheBuildingGet
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req: (timeMachine >= 1)
+
+        *tinySpot
+            name:Wowie! Ten whole clicks!
+            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            req: 1 tinyLove:clicks
+
+Shinies
+    *bigLove
+		movement:onRight moveLeft fade bounce:0.05
+		frequency:60
+		frequency variation:30
+        class:bigButton
+		icon:stuff/luckyBunny.png
+
+    *tinyLove
+        movement:onRight moveLeft fade bounce:0.05
+		frequency:60
+		frequency variation:30
+        class:smallButton
+		icon:stuff/luckyBunny.png
+
+/*
+things to do:
+1. special day special Effect
+2. new iconsssssss
+3. new building
+4. new upgrades
+5. new shiny
+6. cusor change
+
+*/
