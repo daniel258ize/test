@@ -2415,7 +2415,7 @@ Achievements
         *bedAchi1
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
-            req:(beed >= 1)
+            req:(bed >= 1)
 
         *bedAchi2
             name:Wowie! Ten whole clicks!
