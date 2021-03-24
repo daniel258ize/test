@@ -2125,7 +2125,7 @@ Achievements
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:(hand >= 600)
-
+/*
     //friends achi
         *friendsAchi1
             name:Wowie! Ten whole clicks!
@@ -2186,7 +2186,7 @@ Achievements
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:(friends >= 550)
-
+*/
     //defamatory achi
         *dfAchi1
             name:Wowie! Ten whole clicks!
