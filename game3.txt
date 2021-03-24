@@ -3264,7 +3264,7 @@ Achievements
         *tinySpot
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
-            req: 1 tinyLove:clicks
+            req: 1 tinyLove
 
 Shinies
     *bigLove
