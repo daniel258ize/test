@@ -3220,27 +3220,27 @@ Achievements
         *clicked1Love
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
-            req: 1 bigLove:clicks
+            req:1 bigLove
 
         *clicked10Love
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
-            req: 10 bigLove:clicks
+            req:10 bigLove
 
         *clicked20Love
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
-            req: 20 bigLove:clicks
+            req:20 bigLove
 
         *clicked50Love
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
-            req: 50 bigLove:clicks
+            req:50 bigLove
 
         *clicked100Love
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
-            req: 100 bigLove:clicks
+            req:100 bigLove
 
     //Party
         *newHouseParty
