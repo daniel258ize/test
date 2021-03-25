@@ -2954,7 +2954,7 @@ Achievements
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:have beARichestMan
-
+/*
     //iceCream upg achi
         *fillWithLove
             name:Wowie! Ten whole clicks!
@@ -3199,7 +3199,7 @@ Achievements
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:have timeLoop
-
+*/
     //-------------miscellaneous achi--------------//
 
     //byChance
