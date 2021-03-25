@@ -3244,7 +3244,7 @@ Achievements
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:100 bigLove
-
+/*
     //Party
         *newHouseParty
             name:Wowie! Ten whole clicks!
@@ -3257,7 +3257,7 @@ Achievements
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req: have newWingFaiCentre
             req: have jackie
-
+*/
     //something
         *allTheBuildingGet
             name:Wowie! Ten whole clicks!
