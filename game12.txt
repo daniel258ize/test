@@ -62,8 +62,8 @@ Layout
 Buttons
     //use my head icon
     *kissHoiKi
-        name:Kiss Hoi Ki
-        desc:Click this to Kiss Hoi Ki.
+        name:錫祺祺
+        desc:禁呢個圖黎錫佢
         on click:yield 1 love
         on click:anim icon wobble
         no text
@@ -75,8 +75,8 @@ Buttons
 Resources
     //use love icon
     *love
-        name:Love
-        desc:This is Love for you and Hoi Ki relationship. You can't get special tools if you don't have enough Love!
+        name:愛
+        desc:呢個係妳同祺祺既愛情指數，越多愛，越多特別嘢㗎！
         show earned
         class:noBackground
         icon:icons[0,0]
@@ -108,38 +108,38 @@ Resources
 
 Buildings
     *lipstick
-        name:Apply lipstick
-        desc:Kiss Hoi Ki harder with lipstick!!<//><b>Effect:</b><.>Kiss twice harder.
+        name:搽唇膏
+        desc:搽完唇膏大大力錫落祺祺到！！<//><b>效果：</b><.>錫落祺祺度嘅時候多兩倍愛
         cost:100 love
-        on earn:multiply yield of kissHoiKi by 2
-        on lose:multiply yield of kissHoiKi by 1/2
+        on earn:multiply love yield of kissHoiKi by 2
+        on lose:multiply love yield of kissHoiKi by 1/2
         cost increase:500%
         //icon:
     
     *hand
-        name:Hand
-        desc:Get more hands for petting Hoi Ki.
+        name:手
+        desc:用手摸祺祺
         on tick:yield 0.1 love
         cost:15 love
         req:15 love:earned
     
     *friendPoint
-        name:Friend Point
-        desc:Give Hoi Ki some friends.
+        name:朋友
+        desc:祺祺需要多啲朋友
         on tick:yield 1 love
         cost:100 love
         req:100 love:earned
 
     *tellDefamatory
-        name:Defamatory Words Collection
-        desc:Tell Hoi Ki defanatory wordings to your friends.
+        name:寸寸摃
+        desc:祺祺又寸妳啲朋友啦
         on tick:yield 8 love
         cost:1100 love
         req:1100 love:earned
 
     *work
-        name:Work
-        desc:More money less worry
+        name:工作
+        desc:錢錢錢，心中掛
         on tick:yield 47 love
         cost:12000 love
         req:12000 love:earned
@@ -250,18 +250,18 @@ Upgrades
 */
     //lipstick
         *lightColorLipstick
-            name:Light color Lipstick
-            desc:Do not leave a strong lipstick mark on Hoi Ki face.
-            passive:multiply yield of kissHoiKi by 2
+            name:淺色唇膏
+            desc:祺祺喜歡這樣
+            passive:multiply love yield of kissHoiKi by 2
             cost:10000 love
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="lightColorLipstick"]
             req:(lipstick) >= 10
 
         *waterproofLipstick
-            name:Waterproof Lipstick
-            desc:Do not leave lipstick mark on Hoi Ki face.
-            passive:multiply yield of kissHoiKi by 50
+            name:防水唇膏
+            desc:無印良品
+            passive:multiply love yield of kissHoiKi by 50
             cost:100000000 love
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="waterproofLipstick"]
@@ -269,38 +269,38 @@ Upgrades
 
     //hand
         *kungfuTraining
-            name:Kung-fu training
-            desc:Slap Hoi Ki harder!
+            name:去學功夫
+            desc:大大力打落去&#128546;
             passive:multiply yield of hand by 2
-            passive:multiply yield of kissHoiKi by 2
+            passive:multiply love yield of kissHoiKi by 2
             cost:100 love
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="kungfuTraining"]
             req:(hand) >= 1
 
         *reinforcedHand
-            name:Reinforced hand
+            name:硬手
             desc:手掌起繭
             passive:multiply yield of hand by 2
-            passive:multiply yield of kissHoiKi by 2
+            passive:multiply love yield of kissHoiKi by 2
             cost:500 love
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="reinforcedHand"]
             req:(hand) >= 1
 
         *cTPCream
-            name:Carpal tunnel prevention cream
-            desc:it... it hurts to slap...
+            name:止痛藥膏
+            desc:打到痛都手埋
             passive:multiply yield of hand by 2
-            passive:multiply yield of kissHoiKi by 2
+            passive:multiply love yield of kissHoiKi by 2
             cost:10000 love
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="cTPCream"]
             req:(hand) >= 10
 
         *ambidextrous
-            name:Ambidextrous
-            desc:Look ma, both hands!
+            name:左右開弓
+            desc:左右連環車埋去
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="0.1"]
             cost:1000000 love
             icon:icons[1,1]
@@ -308,8 +308,8 @@ Upgrades
             req:(hand) >= 25
 
         *thousandHand
-            name:Thousand hands
-            desc:clickity
+            name:千手觀音
+            desc:越黎越多手啦妳
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="0.5"]
             cost:10000000 love
             icon:icons[1,1]
@@ -317,8 +317,8 @@ Upgrades
             req:(hand) >= 50
 
         *millionHand
-            name:Million hands
-            desc:clickityclickity
+            name:萬手觀音
+            desc:唔好啦
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="5"]
             cost:100000000 love
             icon:icons[1,1]
@@ -326,8 +326,8 @@ Upgrades
             req:(hand) >= 100
 
         *billionHand
-            name:Billion hands
-            desc:clickityclickityclickity
+            name:十萬手觀音
+            desc:你仲有位生手嘅
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="50"]
             cost:1000000000 love
             icon:icons[1,1]
@@ -335,8 +335,8 @@ Upgrades
             req:(hand) >= 150
 
         *trillionHand
-            name:Trillion hands
-            desc:clickityclickityclickityclickityclick
+            name:百萬手觀音
+            desc:祺祺要死啦
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="500"]
             cost:10000000000 love
             icon:icons[1,1]
@@ -344,8 +344,8 @@ Upgrades
             req:(hand) >= 200
 
         *quadrillionHand
-            name:Quadrillion hands
-            desc:man, just go click click click click click, it’s real easy, man.
+            name:千萬手觀音
+            desc:妳打咁多下唔攰咩
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="5000"]
             cost:10000000000000 love
             icon:icons[1,1]
@@ -353,14 +353,14 @@ Upgrades
             req:(hand) >= 250
 
         *quintillionHand
-            name:Quintillion hands
-            desc:sometimes things just click
+            name:億手觀音
+            desc:呀～～～～～～～～～～～～～～～～～～～～～
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="50000"]
             cost:10000000000000000 love
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="quintillionHand"]
             req:(hand) >= 300
-
+/*
         *sextillionHand
             name:Sextillion hands
             desc:cursory flavor text
@@ -378,29 +378,30 @@ Upgrades
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="septillionHand"]
             req:(hand) >= 400
-    
+*/
+
     //friends (1.3 increase factor)
         *boyfriends
-            name:Boy friends
-            desc:Slap Hoi Ki harder!
+            name:男 朋友
+            desc:終於有啲朋友
             passive:multiply yield of friendPoint by 2
             cost:1000 love
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="boyfriends"]
             req:(friendPoint) >= 1
 
-        *arLing
-            name:Ar Ling
-            desc:Slap Hoi Ki harder!
+        *arLam
+            name:呀Lam
+            desc:呀Lam
             passive:multiply yield of friendPoint by 2
             cost:5000 love
             icon:icons[1,1]
-            [i:upgradeClickDisplay %upgradeID="arLing"]
+            [i:upgradeClickDisplay %upgradeID="arLam"]
             req:(friendPoint) >= 5
             
         *yingTing
-            name:Ying Ting
-            desc:Slap Hoi Ki harder!
+            name:英婷
+            desc:終生敵人
             passive:multiply yield of friendPoint by 2
             cost:50000 love
             icon:icons[1,1]
@@ -553,13 +554,13 @@ Upgrades
             [i:upgradeClickDisplay %upgradeID="getBoyfriendsAngry"]
             req:(tellDefamatory) >= 25
 
-        *getArLingAngry
+        *getarLamAngry
             name:Ar Ling hate Hoi Ki now
             desc:Slap Hoi Ki harder!
             passive:multiply yield of tellDefamatory by 2
             cost:55000000 love
             icon:icons[1,1]
-            [i:upgradeClickDisplay %upgradeID="getArLingAngry"]
+            [i:upgradeClickDisplay %upgradeID="getarLamAngry"]
             req:(tellDefamatory) >= 50
 
         *getFriendFoodAngry
@@ -2886,12 +2887,12 @@ Achievements
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:have thousandHand 
-
+/*
         *tooManyHands
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:have septillionHand 
-            
+*/
     //friends upg achi
         *firstFriendGet
             name:Wowie! Ten whole clicks!
