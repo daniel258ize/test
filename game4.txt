@@ -67,7 +67,7 @@ Buttons
         on click:yield 1 love
         on click:anim icon wobble
         no text
-        icon:http://www.free-icons-download.net/images/greedy-emoticon-18451.png
+        icon:https://github.com/daniel258ize/test/blob/main/heart.png
         tooltip origin:bottom
         class:bigButton hasFlares
         icon class:shadowed
@@ -3260,11 +3260,12 @@ Achievements
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:(timeMachine >= 1)
-
+/*
         *tinySpot
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:1 tinyLove
+*/
 
 Shinies
     *bigLove
@@ -3273,14 +3274,14 @@ Shinies
 		frequency variation:30
         class:bigButton
 		icon:stuff/luckyBunny.png
-
+/*
     *tinyLove
         movement:onRight moveLeft fade bounce:0.05
 		frequency:60
 		frequency variation:30
         class:smallButton
 		icon:stuff/luckyBunny.png
-
+*/
 /*
 things to do:
 1. special day special Effect
