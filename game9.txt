@@ -2301,7 +2301,7 @@ Achievements
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:(work >= 500)
-    
+/*
     //icecream achi
         *icecreamAchi1
             name:Wowie! Ten whole clicks!
@@ -2861,7 +2861,7 @@ Achievements
             name:Wowie! Ten whole clicks!
             desc:You've clicked the big red button 10 times. Well done. Well done indeed.
             req:(timeMachine >= 500)
-
+*/
     //-------------upg achi--------------//
 
     //lipstick upg achi
