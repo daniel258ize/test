@@ -81,6 +81,7 @@ Resources
         class:noBackground
         icon:icons[0,0]
     
+    /*
     *prestigePoint
         name:Prestige Point
         desc:This is Love for you and Hoi Ki relationship. You can't get special tools if you don't have enough Love!
@@ -98,11 +99,11 @@ Resources
         start with:1
 
 
-    /*  hidden res
-        //*money
+    hidden res
+    //*money
 
-        *reputation
-        //*fat
+    *reputation
+    //*fat
     */
 
 Buildings
@@ -142,7 +143,7 @@ Buildings
         on tick:yield 47 love
         cost:12000 love
         req:12000 love:earned
-
+/*
     *iceCream
         name:Ice-cream
         desc:Hoi Ki should eat ice-cream with you, shouldn't he?
@@ -219,11 +220,14 @@ Buildings
         on earn:yield 1 prestigeWeight
         cost:(prestigeWeight)*10000000 love
         req:(prestigeWeight)*1000000<=(love:earned)
+*/
 
 Upgrades
     // 11 basic upgrades
     *TEMPLATE
 		on click:anim glow
+
+/*
     *prestige
         name:Prestige to a new life
         desc:Love Hoi Ki more in a new life. Start fresh.
@@ -243,7 +247,7 @@ Upgrades
                     multiply yield of :Buildings by ((prestigePoint) * (prestigeWeight) * 0.1)
                     toast You Are Prestiged. Now Your Love Gains Is Multiplied By ((prestigePoint) * (prestigeWeight) * 0.1).
                 end
-
+*/
     //lipstick
         *lightColorLipstick
             name:Light color Lipstick
@@ -774,7 +778,7 @@ Upgrades
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="beARichestMan"]
             req:(work) >= 400
-    
+/*
     //icecream
         *HoiKiMadeIceCream
             name:Yummy ice-cream
@@ -1686,7 +1690,7 @@ Upgrades
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="timeLoop"]
             req:(timeMachine) >= 400
-
+*/
     //....miscellaneous....
         *markSixLot
             on tick:
@@ -1700,7 +1704,6 @@ Upgrades
                 end
             hidden
             owned
-
 
         *govLuckyMoney
             hidden
