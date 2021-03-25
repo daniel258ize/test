@@ -270,7 +270,7 @@ Upgrades
     //hand
         *kungfuTraining
             name:去學功夫
-            desc:大大力打落去&#128546;
+            desc:大大力打落去😢
             passive:multiply yield of hand by 2
             passive:multiply love yield of kissHoiKi by 2
             cost:100 love
