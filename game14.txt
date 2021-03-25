@@ -64,7 +64,7 @@ Buttons
     *kissHoiKi
         name:錫祺祺
         desc:禁呢個圖黎錫佢
-        on click:yield 1 love
+        on click:yield 1*((lipstick)+1) love
         on click:anim icon wobble
         no text
         icon:https://github.com/daniel258ize/test/blob/main/heart.png?raw=true
