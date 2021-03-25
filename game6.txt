@@ -67,7 +67,7 @@ Buttons
         on click:yield 1 love
         on click:anim icon wobble
         no text
-        icon:https://github.com/daniel258ize/test/blob/main/heart.png
+        icon:https://github.com/daniel258ize/test/blob/main/heart.png?raw=true
         tooltip origin:bottom
         class:bigButton hasFlares
         icon class:shadowed
