@@ -81,7 +81,7 @@ Resources
         class:noBackground
         icon:https://github.com/daniel258ize/test/blob/main/heart48.png?raw=true
     
-    /*
+/*
     *prestigePoint
         name:Prestige Point
         desc:This is Love for you and Hoi Ki relationship. You can't get special tools if you don't have enough Love!
@@ -104,7 +104,7 @@ Resources
 
     *reputation
     //*fat
-    */
+*/
 
 Buildings
     *lipstick
@@ -114,7 +114,7 @@ Buildings
         on earn:multiply love yield of kissHoiKi by 2
         on lose:multiply love yield of kissHoiKi by 1/2
         cost increase:500%
-        //icon:
+        icon:https://github.com/daniel258ize/test/blob/main/lipstick48.png?raw=true
     
     *hand
         name:手
@@ -122,6 +122,7 @@ Buildings
         on tick:yield 0.1 love
         cost:15 love
         req:15 love:earned
+        icon:https://github.com/daniel258ize/test/blob/main/hand48.png?raw=true
     
     *friendPoint
         name:朋友
@@ -129,6 +130,7 @@ Buildings
         on tick:yield 1 love
         cost:100 love
         req:100 love:earned
+        icon:https://github.com/daniel258ize/test/blob/main/friend48.png?raw=true
 
     *tellDefamatory
         name:寸寸摃
@@ -136,6 +138,7 @@ Buildings
         on tick:yield 8 love
         cost:1100 love
         req:1100 love:earned
+        icon:https://github.com/daniel258ize/test/blob/main/defamatory48.png?raw=true
 
     *work
         name:工作
@@ -143,6 +146,7 @@ Buildings
         on tick:yield 47 love
         cost:12000 love
         req:12000 love:earned
+        icon:https://github.com/daniel258ize/test/blob/main/work48.png?raw=true
 /*
     *iceCream
         name:Ice-cream
