@@ -39,12 +39,11 @@ Includes
         end
 
     *include showBuildingDesc %baseIncre %thisBuilding : <//><b>效果：</b><.>每秒增加 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10] 愛<//><//>目前：每秒增加 [floor([%baseIncre]*pow(2,lipstick)*[%thisBuilding])].[[%baseIncre]*pow(2,lipstick)*[%thisBuilding]*10%10] 愛 ([[%baseIncre]*pow(2,lipstick)*[%thisBuilding]/love:ps*100]%)
-    *include showUpgradeDesc %baseIncre %targetBuilding %increment="false"
-        $temp=false
-        if([%increment] = [$temp])
-            <//><b>效果：</b><.><b>[n:[%targetBuilding]]</b> 的效果變成 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10] 倍
-        else
+    *include showUpgradeDesc %baseIncre %targetBuilding %increment="0"
+        if([%increment])
             <//><b>效果：</b><.><b>[n:[%targetBuilding]]</b> 的效果增加 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10]
+        else
+            <//><b>效果：</b><.><b>[n:[%targetBuilding]]</b> 的效果變成 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10] 倍
         end
 Layout
     *main
@@ -312,7 +311,7 @@ Upgrades
 
         *ambidextrous
             name:左右開弓
-            desc:左右連環車埋去[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="0.1"] %targetBuilding="hand" %increment="true"]
+            desc:左右連環車埋去[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="0.1"] %targetBuilding="hand" %increment="1"]
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="0.1"]
             cost:1000000 love
             icon:icons[1,1]
@@ -321,7 +320,7 @@ Upgrades
 
         *thousandHand
             name:千手觀音
-            desc:越黎越多手啦妳[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="0.5"] %targetBuilding="hand" %increment="true"]
+            desc:越黎越多手啦妳[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="0.5"] %targetBuilding="hand" %increment="1"]
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="0.5"]
             cost:10000000 love
             icon:icons[1,1]
@@ -330,7 +329,7 @@ Upgrades
 
         *millionHand
             name:萬手觀音
-            desc:唔好啦[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="5"] %targetBuilding="hand" %increment="true"]
+            desc:唔好啦[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="5"] %targetBuilding="hand" %increment="1"]
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="5"]
             cost:100000000 love
             icon:icons[1,1]
@@ -339,7 +338,7 @@ Upgrades
 
         *billionHand
             name:十萬手觀音
-            desc:你仲有位生手嘅？[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="50"] %targetBuilding="hand" %increment="true"]
+            desc:你仲有位生手嘅？[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="50"] %targetBuilding="hand" %increment="1"]
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="50"]
             cost:1000000000 love
             icon:icons[1,1]
@@ -348,7 +347,7 @@ Upgrades
 
         *trillionHand
             name:百萬手觀音
-            desc:祺祺要死啦[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="500"] %targetBuilding="hand" %increment="true"]
+            desc:祺祺要死啦[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="500"] %targetBuilding="hand" %increment="1"]
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="500"]
             cost:10000000000 love
             icon:icons[1,1]
@@ -357,7 +356,7 @@ Upgrades
 
         *quadrillionHand
             name:千萬手觀音
-            desc:妳打咁多下唔攰咩[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="5000"] %targetBuilding="hand" %increment="true"]
+            desc:妳打咁多下唔攰咩[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="5000"] %targetBuilding="hand" %increment="1"]
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="5000"]
             cost:10000000000000 love
             icon:icons[1,1]
@@ -366,7 +365,7 @@ Upgrades
 
         *quintillionHand
             name:億手觀音
-            desc:呀～～～～～～～～～～～～～～～～～～～～～[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="50000"] %targetBuilding="hand" %increment="true"]
+            desc:呀～～～～～～～～～～～～～～～～～～～～～[i:showUpgradeDesc %baseIncre=[i:handUpgradeGains %baseGain="50000"] %targetBuilding="hand" %increment="1"]
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="50000"]
             cost:10000000000000000 love
             icon:icons[1,1]
