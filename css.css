@@ -33,8 +33,9 @@ body{
 	border-top-right-radius:20px;
 	margin-top:4px;
 }
-
-
+#thing-0{
+    cursor: url('https://raw.githubusercontent.com/daniel258ize/test/main/kiss.png'), auto;	
+}
 #box-main
 {
 	left:0px;
