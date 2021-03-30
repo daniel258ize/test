@@ -111,7 +111,7 @@ Buildings
     *lipstick
         name:搽唇膏
         desc:搽完唇膏大大力錫落祺祺到！！<//><b>效果：</b><.>錫落祺祺度嘅時候多兩倍愛
-        cost:5 love
+        cost:100 love
         cost increase:500%
         icon:https://github.com/daniel258ize/test/blob/main/lipstick48.png?raw=true
     
@@ -125,7 +125,7 @@ Buildings
     
     *friendPoint
         name:朋友
-        desc:祺祺需要多啲朋友
+        desc:祺祺需要多啲朋友[i:showBuildingDesc %baseIncre="1" %thisBuilding="friendPoint"]
         on tick:yield 1*pow(2,(lipstick)) love
         cost:100 love
         req:100 love:earned
@@ -133,7 +133,7 @@ Buildings
 
     *tellDefamatory
         name:寸寸摃
-        desc:祺祺又寸妳啲朋友啦
+        desc:祺祺又寸妳啲朋友啦[i:showBuildingDesc %baseIncre="8" %thisBuilding="tellDefamatory"]
         on tick:yield 8*pow(2,(lipstick)) love
         cost:1100 love
         req:1100 love:earned
@@ -141,7 +141,7 @@ Buildings
 
     *work
         name:工作
-        desc:錢錢錢，心中掛
+        desc:錢錢錢，心中掛[i:showBuildingDesc %baseIncre="47" %thisBuilding="work"]
         on tick:yield 47*pow(2,(lipstick)) love
         cost:12000 love
         req:12000 love:earned
