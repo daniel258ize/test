@@ -79,7 +79,7 @@ Resources
         desc:呢個係妳同祺祺既愛情指數，越多愛，越多特別嘢㗎！
         show earned
         class:noBackground
-        icon:icons[0,0]
+        icon:https://github.com/daniel258ize/test/blob/main/heart48.png?raw=true
     
     /*
     *prestigePoint
