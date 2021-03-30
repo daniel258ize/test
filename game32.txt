@@ -36,6 +36,8 @@ Includes
             end
         end
 
+    *include showBuildingDesc %baseIncre %thisBuilding
+        <//><b>效果：</b><.>每秒增加 [floor(%baseIncre*pow(2,lipstick))].[%baseIncre*pow(2,lipstick)*10%10] 愛<//><//>目前：每秒增加 [floor(%baseIncre*pow(2,lipstick*%thisBuilding))].[%baseIncre*pow(2,lipstick)*%thisBuilding*10%10] 愛
 Layout
     *main
         contains:res, buttons, achi
@@ -116,7 +118,7 @@ Buildings
     
     *hand
         name:手
-        desc:用手摸祺祺<//><b>效果：</b><.>每秒增加 [floor(0.1*pow(2,lipstick))].[0.1*pow(2,lipstick)*10%10] 愛<//>    目前：每秒增加 [floor(0.1*pow(2,lipstick*hand))].[0.1*pow(2,lipstick)*hand*10%10] 愛
+        desc:用手摸祺祺[i:showBuildingDesc %baseIncre="0.1" %thisBuilding="hand"]
         on tick:yield 0.1*pow(2,(lipstick)) love
         cost:15 love
         req:15 love:earned
