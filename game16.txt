@@ -12,7 +12,7 @@ Settings
     building cost increase:115%
 	building cost refund:50%
     spritesheet:icons, 48 by 48, stuff/bunnyIcons.png
-    stylesheet:https://raw.githubusercontent.com/daniel258ize/test/main/css.css
+    stylesheet:https://raw.githubusercontent.com/daniel258ize/test/main/css.txt
 
 Includes
     *include handUpgradeGains %baseGain : [%baseGain]*2
