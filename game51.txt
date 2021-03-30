@@ -307,7 +307,7 @@ Upgrades
 
         *ambidextrous
             name:左右開弓
-            desc:左右連環車埋去[i:showUpgradeDescInc %baseIncre="1 %targetBuilding="hand"]
+            desc:左右連環車埋去[i:showUpgradeDescInc %baseIncre="1" %targetBuilding="hand"]
             passive:increase yield of hand by [i:handUpgradeGains %baseGain="0.1"]
             cost:1000000 love
             icon:icons[1,1]
