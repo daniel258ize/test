@@ -40,7 +40,7 @@ Includes
 
     *include showBuildingDesc %baseIncre %thisBuilding : <//><b>效果：</b><.>每秒增加 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10] 愛<//><//>目前：每秒增加 [floor([%baseIncre]*pow(2,lipstick)*[%thisBuilding])].[[%baseIncre]*pow(2,lipstick)*[%thisBuilding]*10%10] 愛 ([[%baseIncre]*pow(2,lipstick)*[%thisBuilding]/love:ps*100]%)
     *include showUpgradeDesc %baseIncre %targetBuilding %increment="false"
-        if([%increment] = false)
+        if([[%increment] = false])
             <//><b>效果：</b><.><b>[n:[%targetBuilding]]</b> 的效果變成 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10] 倍
         else
             <//><b>效果：</b><.><b>[n:[%targetBuilding]]</b> 的效果增加 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10]
