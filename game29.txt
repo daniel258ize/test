@@ -109,7 +109,7 @@ Resources
 Buildings
     *lipstick
         name:搽唇膏
-        desc:搽完唇膏大大力錫落祺祺到！！<//><b>效果：</b><.>錫落祺祺度嘅時候多兩倍愛
+        desc:搽完唇膏大大力錫落祺祺到！！<//><b>效果：</b><.>錫落祺祺度嘅時候多<q>兩</q>倍愛
         cost:5 love
         cost increase:500%
         icon:https://github.com/daniel258ize/test/blob/main/lipstick48.png?raw=true
