@@ -116,7 +116,7 @@ Buildings
     
     *hand
         name:手
-        desc:用手摸祺祺
+        desc:用手摸祺祺<//><b>效果：</b><.>每秒增加 (0.1*pow(2,(lipstick))) 愛
         on tick:yield 0.1*pow(2,(lipstick)) love
         cost:15 love
         req:15 love:earned
@@ -1756,111 +1756,111 @@ Achievements
 
     //clicked time
         *firstKiss
-            name:你錫左祺祺一次啦！
-            desc:Kiss Hoi Ki.
+            name:錫第一次
+            desc:你錫左祺祺一次啦！
             req:1 kissHoiKi:clicks
             icon:icons[2,4] icons[0,2] icons[0,6]
 
         *705Kiss
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫705次
+            desc:你錫到你生日嘅數目啦！
             req:705 kissHoiKi:clicks
 
         *828Kiss
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫828次
+            desc:你錫到我地週年紀念日嘅數目啦！
             req:828 kissHoiKi:clicks
 
         *1104Kiss
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫1104次
+            desc:你錫到我生日嘅數目啦！
             req:1104 kissHoiKi:clicks
 
         *kissathlon
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫100000次
+            desc:錫錫馬拉松，開始！
             req:100000 kissHoiKi:clicks
 
         *kissOlympics
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫10000000次
+            desc:參加錫錫奧運會
             req:10000000 kissHoiKi:clicks
 
         *kissChampion
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫1000000000次
+            desc:🎊🎉🎊👏🏻恭喜成為世界錫錫冠軍👏🏻🎉🎊🎉
             req:1000000000 kissHoiKi:clicks
 
         *kissEnchanted
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫100000000000次
+            desc:你錫錫成魔啦😈
             req:100000000000 kissHoiKi:clicks
 
         *kissInfinitly
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫10000000000000次
+            desc:錫錫者聯盟-無限之錫
             req:10000000000000 kissHoiKi:clicks
             
         *kissHell
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫1000000000000000次
+            desc:錫~錫~地~獄~~~♨️🔥👺
             req:1000000000000000 kissHoiKi:clicks
 
         *youWouldntStop
-            name:You wont stop, are you?
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:錫100000000000000000次
+            desc:你真係唔會停㗎喎🤪
             req:100000000000000000 kissHoiKi:clicks
 
         *biteKiss
-            name:Wowie! Ten whole clicks!
-            desc:You've clicked the big red button 10 times. Well done. Well done indeed.
+            name:咬咬錫
+            desc:見你錫咁多次，比你咬下我啦💩
             req:10000000000000000000 kissHoiKi:clicks
 
     //love gain per sec
         *aNewFriend
-            name:Hop and a skip
-            desc:Produce <b>1000</b> bunnies per second.
+            name:新朋友
+            desc:我地而家唔係好熟
             req:1 love per second
             icon:
 
         *aCasualFriend
-            name:Hop and a skip
-            desc:Produce <b>1000</b> bunnies per second.
+            name:普通朋友
+            desc:你同祺祺識左一排
             req:10 love per second
             icon:
 
         *aOkayFriend
-            name:Hop and a skip
-            desc:Produce <b>1000</b> bunnies per second.
+            name:okay friend 嘅朋友
+            desc:祺祺同你 okay friend 啦
             req:100 love per second
             icon:
 
         *aBestFriend
-            name:Hop and a skip
-            desc:Produce <b>1000</b> bunnies per second.
+            name:好朋友
+            desc:祺祺做左你好朋友啦
             req:1000 love per second
             icon:
 
         *aBoyFriend
-            name:Hop and a skip
-            desc:Produce <b>1000</b> bunnies per second.
+            name:男朋友
+            desc:祺祺做左你男朋友啦
             req:10000 love per second
             icon:
 
         *aFiance
-            name:Hop and a skip
-            desc:Produce <b>1000</b> bunnies per second.
+            name:未婚夫
+            desc:你嘅未婚夫就是祺祺
             req:100000 love per second
             icon:
 
         *aHusband
-            name:Hop and a skip
-            desc:Produce <b>1000</b> bunnies per second.
+            name:老公
+            desc:老婆仔~
             req:1000000 love per second
             icon:
 
         *twoTwistedTowel
-            name:Hop and a skip
+            name:兩條扭埋既毛巾
             desc:Produce <b>1000</b> bunnies per second.
             req:10000000 love per second
             icon:
