@@ -64,7 +64,7 @@ Buttons
     *kissHoiKi
         name:錫祺祺
         desc:禁呢個圖黎錫佢
-        on click:yield 1*((lipstick)+1) love
+        on click:yield pow(2,(lipstick)) love
         on click:anim icon wobble
         no text
         icon:https://github.com/daniel258ize/test/blob/main/heart.png?raw=true
@@ -111,15 +111,13 @@ Buildings
         name:搽唇膏
         desc:搽完唇膏大大力錫落祺祺到！！<//><b>效果：</b><.>錫落祺祺度嘅時候多兩倍愛
         cost:5 love
-        on earn:multiply gain of love by 3
-        on lose:multiply love yield of kissHoiKi by 1/2
-        cost increase:500%
+        cost increase:150%
         icon:https://github.com/daniel258ize/test/blob/main/lipstick48.png?raw=true
     
     *hand
         name:手
         desc:用手摸祺祺
-        on tick:yield 0.1 love
+        on tick:yield 0.1*pow(2,(lipstick)) love
         cost:15 love
         req:15 love:earned
         icon:https://github.com/daniel258ize/test/blob/main/hand48.png?raw=true
@@ -127,7 +125,7 @@ Buildings
     *friendPoint
         name:朋友
         desc:祺祺需要多啲朋友
-        on tick:yield 1 love
+        on tick:yield 1*pow(2,(lipstick)) love
         cost:100 love
         req:100 love:earned
         icon:https://github.com/daniel258ize/test/blob/main/friend48.png?raw=true
@@ -135,7 +133,7 @@ Buildings
     *tellDefamatory
         name:寸寸摃
         desc:祺祺又寸妳啲朋友啦
-        on tick:yield 8 love
+        on tick:yield 8*pow(2,(lipstick)) love
         cost:1100 love
         req:1100 love:earned
         icon:https://github.com/daniel258ize/test/blob/main/defamatory48.png?raw=true
@@ -143,7 +141,7 @@ Buildings
     *work
         name:工作
         desc:錢錢錢，心中掛
-        on tick:yield 47 love
+        on tick:yield 47*pow(2,(lipstick)) love
         cost:12000 love
         req:12000 love:earned
         icon:https://github.com/daniel258ize/test/blob/main/work48.png?raw=true
@@ -1754,10 +1752,11 @@ Items
 Achievements
     *TEMPLATE
 		on click:anim glow
+        hidden when 0
 
     //clicked time
         *firstKiss
-            name:You kiss Hoi Ki first time!!!
+            name:你錫左祺祺一次啦！
             desc:Kiss Hoi Ki.
             req:1 kissHoiKi:clicks
             icon:icons[2,4] icons[0,2] icons[0,6]
@@ -3282,6 +3281,7 @@ Shinies
 		frequency variation:30
         class:bigButton
 		icon:stuff/luckyBunny.png
+        on click:yield (love:earned) love
 /*
     *tinyLove
         movement:onRight moveLeft fade bounce:0.05
