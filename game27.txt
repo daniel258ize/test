@@ -116,7 +116,7 @@ Buildings
     
     *hand
         name:手
-        desc:用手摸祺祺<//><b>效果：</b><.>每秒增加 [floor(0.1*pow(2,lipstick))].[(0.1*pow(2,(lipstick))*10)%10] 愛
+        desc:用手摸祺祺<//><b>效果：</b><.>每秒增加 [floor(0.1*pow(2,lipstick))].[(0.1*pow(2,lipstick)*10)%10] 愛
         on tick:yield 0.1*pow(2,(lipstick)) love
         cost:15 love
         req:15 love:earned
