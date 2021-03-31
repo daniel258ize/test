@@ -38,7 +38,8 @@ Includes
             end
         end
 
-    *include showBuildingDesc %baseIncre %thisBuilding : <//><b>效果：</b><.>每秒增加 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10] 愛<//><//>目前：每秒增加 [floor([%baseIncre]*pow(2,lipstick)*[%thisBuilding])].[[%baseIncre]*pow(2,lipstick)*[%thisBuilding]*10%10] 愛 ([[%baseIncre]*pow(2,lipstick)*[%thisBuilding]/love:ps*100]%)
+    *include showBuildingDesc %baseIncre %thisBuilding : <//><b>效果：</b><.>每秒增加 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10] 愛<//><//>
+    // <//><b>效果：</b><.>每秒增加 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10] 愛<//><//>目前：每秒增加 [floor([%baseIncre]*pow(2,lipstick)*[%thisBuilding])].[[%baseIncre]*pow(2,lipstick)*[%thisBuilding]*10%10] 愛 ([[%baseIncre]*pow(2,lipstick)*[%thisBuilding]/love:ps*100]%)
     *include showUpgradeDesc %baseIncre %targetBuilding : <//><b>效果：</b><.><b>[n:[%targetBuilding]]</b> 的效果變成 [floor([%baseIncre]*pow(2,lipstick))].[[%baseIncre]*pow(2,lipstick)*10%10] 倍
     *include showUpgradeDescInc %baseIncre %targetBuilding : <//><b>效果：</b><.><b>[n:[%targetBuilding]]</b> 的效果增加 [[%baseIncre] * friendPoint + tellDefamatory + work]
 Layout
@@ -114,7 +115,14 @@ Resources
 Buildings
     *lipstick
         name:搽唇膏
-        desc:搽完唇膏大大力錫落祺祺到！！<//><b>效果：</b><.>錫落祺祺度嘅時候多兩倍愛
+        desc:       .-.<//> __   /   \   __<//>(  `'.\   /.'`  )<//> '-._.(;;;)._.-'<//> .-'  ,`"`,  '-.<//>(__.-'/   \'-.__)/)_<//>      \   /\    / / )<//>       '-'  |   \/.-')<//>       ,    | .'/\'..)<//>       |\   |/  | \_)<//>       \ |  |   \_/<//>        | \ /<//>         \|/    _,<//>         /  __/ /<//>         | _/ _.'<//>         |/__/<//>          \
+
+------------------------------------------------
+Thank you for visiting https://asciiart.website/
+This ASCII pic can be found at
+https://asciiart.website/index.php?art=plants/flowers
+
+        //搽完唇膏大大力錫落祺祺到！！<//><b>效果：</b><.>錫落祺祺度嘅時候多兩倍愛
         cost:100 love
         cost increase:500%
         icon:https://github.com/daniel258ize/test/blob/main/lipstick48.png?raw=true
@@ -389,17 +397,18 @@ Upgrades
 
     //friends (1.3 increase factor)
         *boyfriends
-            name:男 朋友
-            desc:終於有啲朋友
+            name:男  朋友s
+            desc:終於有啲朋友[i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:1000 love
             icon:icons[1,1]
             [i:upgradeClickDisplay %upgradeID="boyfriends"]
             req:(friendPoint) >= 1
+            icon:https://github.com/daniel258ize/test/blob/main/work48.png?raw=true
 
         *arLam
             name:呀Lam
-            desc:呀Lam
+            desc:呀Lam[i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:5000 love
             icon:icons[1,1]
@@ -408,7 +417,7 @@ Upgrades
             
         *yingTing
             name:英婷
-            desc:終生敵人
+            desc:終生敵人[i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:50000 love
             icon:icons[1,1]
@@ -416,8 +425,8 @@ Upgrades
             req:(friendPoint) >= 25
 
         *friendFood
-            name:Food
-            desc:Slap Hoi Ki harder!
+            name:食物
+            desc:食物🍭[i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:5000000 love
             icon:icons[1,1]
@@ -425,8 +434,8 @@ Upgrades
             req:(friendPoint) >= 50
 
         *cheungChauFriend
-            name:Cheung Chau friend
-            desc:Slap Hoi Ki harder!
+            name:長洲friend
+            desc:長洲friend⛴🏖[i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:500000000 love
             icon:icons[1,1]
@@ -434,8 +443,8 @@ Upgrades
             req:(friendPoint) >= 75
 
         *primarySchoolFriend
-            name:Primary school friend
-            desc:Slap Hoi Ki harder!
+            name:小學friend
+            desc:🏫[i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:50000000000 love
             icon:icons[1,1]
@@ -444,7 +453,7 @@ Upgrades
 
         *loL
             name:Noel
-            desc:Slap Hoi Ki harder!
+            desc:🈹🈲🔞❗️</>8===D[i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:50000000000000 love
             icon:icons[1,1]
@@ -453,7 +462,7 @@ Upgrades
 
         *wing
             name:Wing Yu
-            desc:Slap Hoi Ki harder!
+            desc:Slap Hoi Ki harder![i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:50000000000000000 love
             icon:icons[1,1]
@@ -462,7 +471,7 @@ Upgrades
 
         *loBa
             name:Lo Ba
-            desc:Slap Hoi Ki harder!
+            desc:Slap Hoi Ki harder![i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:50000000000000000000 love
             icon:icons[1,1]
@@ -471,7 +480,7 @@ Upgrades
 
         *irene
             name:Irene
-            desc:Slap Hoi Ki harder!
+            desc:Slap Hoi Ki harder![i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:500000000000000000000 love
             icon:icons[1,1]
@@ -480,7 +489,7 @@ Upgrades
 
         *chiHeng
             name:Chi Heng
-            desc:Slap Hoi Ki harder!
+            desc:Slap Hoi Ki harder![i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:5000000000000000000000 love
             icon:icons[1,1]
@@ -490,7 +499,7 @@ Upgrades
 
         *jackie
             name:Jackie
-            desc:Slap Hoi Ki harder!
+            desc:Slap Hoi Ki harder![i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:50000000000000000000000 love
             icon:icons[1,1]
@@ -499,7 +508,7 @@ Upgrades
 
         *fatLam
             name:Fat Lam
-            desc:Slap Hoi Ki harder!
+            desc:Slap Hoi Ki harder![i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:500000000000000000000000 love
             icon:icons[1,1]
@@ -508,7 +517,7 @@ Upgrades
 
         *jimmy
             name:Jimmy
-            desc:Slap Hoi Ki harder!
+            desc:Slap Hoi Ki harder![i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:5000000000000000000000000 love
             icon:icons[1,1]
@@ -517,7 +526,7 @@ Upgrades
 
         *lokHin
             name:Lok Hin
-            desc:Slap Hoi Ki harder!
+            desc:Slap Hoi Ki harder![i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:50000000000000000000000000 love
             icon:icons[1,1]
@@ -526,7 +535,7 @@ Upgrades
 
         *chiKi
             name:Shit passage
-            desc:Slap Hoi Ki harder!
+            desc:Slap Hoi Ki harder![i:showUpgradeDesc %baseIncre="2" %targetBuilding="friendPoint"]
             passive:multiply love yield of friendPoint by 2
             cost:500000000000000000000000000 love
             icon:icons[1,1]
